@@ -4,6 +4,8 @@ const path = require('path');
 const express = require('express');
 const app = express();
 
+const uuid = require('uuid');
+
 app.use(express.urlencoded({extended: false}));
 
 const userPath = path.join(__dirname, 'data', 'users.json');
@@ -42,7 +44,25 @@ app.post('/togglepower/:id', function(req, res) {
     res.send(registeredDevices);
 });
 
-app.post('/registerdevice', function(req, res) {
+app.post('/registerdevice/:devicetype', function(req, res) {
+    const deviceType = req.params.devicetype;
+
+    const fileData = fs.readFileSync(devicesPath);
+    const registeredDevices = JSON.parse(fileData);
+
+    if (deviceType === "winecellar") {
+        registeredDevices.push({
+            "name": "와인 셀러",
+            "onoff": "꺼짐",
+            "state": "16°C",
+            "deviceImg": 4,
+            "networkImg": 0,
+            "isActive": false,
+            "id": uuid.v4()
+        });
+    }
+
+    fs.writeFileSync(devicesPath, JSON.stringify(registeredDevices));
     res.send('device registered');
 });
 

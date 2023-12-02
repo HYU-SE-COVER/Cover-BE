@@ -1,1 +1,56 @@
-[{"name":"전등","onoff":"꺼짐","state":"","deviceImg":0,"networkImg":1,"isActive":false,"id":0},{"name":"에어컨","onoff":"켜짐","state":"23°C 냉방","deviceImg":1,"networkImg":2,"isActive":false,"id":1},{"name":"TV","onoff":"꺼짐","state":"YouTube 시청 중","deviceImg":2,"networkImg":1,"isActive":false,"id":2},{"name":"공기청정기","onoff":"켜짐","state":"공기질 좋음","deviceImg":3,"networkImg":0,"isActive":false,"id":3},{"name":"와인 셀러","onoff":"켜짐","state":"16°C","deviceImg":4,"networkImg":0,"isActive":false,"id":4},{"name":"청소기","onoff":"꺼짐","state":"충전중","deviceImg":5,"networkImg":0,"isActive":false,"id":5},{"name":"세탁기","onoff":"꺼짐","state":"오후 6시에 예약","deviceImg":6,"networkImg":0,"isActive":false,"id":6}]
+[
+	{
+		"name": "전등",
+		"onoff": "켜짐",
+		"state": "",
+		"deviceImg": 0,
+		"networkImg": 1,
+		"isActive": true,
+		"id": 0
+	},
+	{
+		"name": "에어컨",
+		"onoff": "꺼짐",
+		"state": "23°C 냉방",
+		"deviceImg": 1,
+		"networkImg": 2,
+		"isActive": false,
+		"id": 1
+	},
+	{
+		"name": "TV",
+		"onoff": "꺼짐",
+		"state": "YouTube 시청 중",
+		"deviceImg": 2,
+		"networkImg": 1,
+		"isActive": false,
+		"id": 2
+	},
+	{
+		"name": "공기청정기",
+		"onoff": "켜짐",
+		"state": "공기질 좋음",
+		"deviceImg": 3,
+		"networkImg": 0,
+		"isActive": true,
+		"id": 3
+	},
+	{
+		"name": "청소기",
+		"onoff": "꺼짐",
+		"state": "충전중",
+		"deviceImg": 5,
+		"networkImg": 0,
+		"isActive": false,
+		"id": 5
+	},
+	{
+		"name": "세탁기",
+		"onoff": "꺼짐",
+		"state": "오후 6시에 예약",
+		"deviceImg": 6,
+		"networkImg": 0,
+		"isActive": false,
+		"id": 6
+	}
+]
