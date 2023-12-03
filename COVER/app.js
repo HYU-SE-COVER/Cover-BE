@@ -46,11 +46,34 @@ app.post('/togglepower/:id', function(req, res) {
 
 app.post('/registerdevice/:devicetype', function(req, res) {
     const deviceType = req.params.devicetype;
+    console.log(deviceType);
 
     const fileData = fs.readFileSync(devicesPath);
     const registeredDevices = JSON.parse(fileData);
-
-    if (deviceType === "winecellar") {
+    
+    if (deviceType == 0) {
+        registeredDevices.push({
+            "name": "전등",
+            "onoff": "꺼짐",
+            "state": "",
+            "deviceImg": 0,
+            "networkImg": 1,
+            "isActive": false,
+            "id": uuid.v4()
+        })
+    }
+    if (deviceType == 1) {
+        registeredDevices.push({
+            "name": "에어컨",
+            "onoff": "꺼짐",
+            "state": "23°C 냉방",
+            "deviceImg": 1,
+            "networkImg": 2,
+            "isActive": false,
+            "id": uuid.v4()
+        });
+    }
+    else if (deviceType == 4) {
         registeredDevices.push({
             "name": "와인 셀러",
             "onoff": "꺼짐",
