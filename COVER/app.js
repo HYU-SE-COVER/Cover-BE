@@ -1,12 +1,15 @@
 const fs = require('fs');
 const path = require('path');
 
+const bodyParser = require('body-parser');
+
 const express = require('express');
 const app = express();
 
 const uuid = require('uuid');
 
 app.use(express.urlencoded({extended: false}));
+app.use(bodyParser.json());
 
 const userPath = path.join(__dirname, 'data', 'users.json');
 const devicesPath = path.join(__dirname, 'data', 'devices.json');
@@ -87,6 +90,41 @@ app.post('/registerdevice/:devicetype', function(req, res) {
 
     fs.writeFileSync(devicesPath, JSON.stringify(registeredDevices));
     res.send('device registered');
+});
+
+app.get('/get/:id', function(req, res) {
+    const deviceType = req.params.id;
+    const fileData = fs.readFileSync(devicesPath);
+    const registeredDevices = JSON.parse(fileData);
+
+    for (const item of registeredDevices) {
+        if (item.deviceImg == deviceType) {
+            console.log(item);
+            res.send(item);
+            break;
+        }
+    }
+    res.send(null);
+});
+
+app.post('/update/:id', function(req, res) {
+    const { state, sliderValue } = req.body;
+    console.log(state, sliderValue);
+
+    const deviceType = req.params.id;
+    const fileData = fs.readFileSync(devicesPath);
+    const registeredDevices = JSON.parse(fileData);
+    
+    for (const item of registeredDevices) {
+        if (item.deviceImg == deviceType) {
+            item.isActive = state;
+            item.onoff = state ? '켜짐' : '꺼짐';
+            item.state = item.state.replace(/\d+/, sliderValue);       
+            console.log(item);
+            return res.send(item);
+        }
+    }
+    res.send('failed');
 });
 
 app.listen(5000);
